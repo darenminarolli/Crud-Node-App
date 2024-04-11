@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors  = require('cors')
 require("dotenv").config()
 const app = express()
 
@@ -7,6 +8,7 @@ const productsRoute = require('./routes/product.routes.js')
 // middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(cors())
 // routes
 
 app.use("/api/products", productsRoute)
