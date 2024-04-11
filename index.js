@@ -14,7 +14,7 @@ const uri= process.env.DB_CONNECTION_URI
 mongoose.connect(uri)
     .then(() => {
 
-        app.listen(6969, () => {
+        app.listen(process.env.PORT || 6969, () => {
             console.log('listening on port 6969')
         })
 
