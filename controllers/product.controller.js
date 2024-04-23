@@ -1,4 +1,5 @@
 const Product = require('../models/product.model.js');
+require("dotenv").config()
 const getProducts = async(req,res)=>{
     try{
         const products = await Product.find({})
@@ -56,7 +57,7 @@ const postImageRequest = async (req, res) => {
     try {
       const response = await fetch('https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0', {
         headers: {
-          Authorization: 'Bearer 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',
+          Authorization: `Bearer  ${process.env.AUTH_TOKEN}`,
           'Content-Type': 'application/json'
         },
         method: 'POST',
