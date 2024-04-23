@@ -51,4 +51,23 @@ const deleteProduct = async(req,res)=>{
         res.status(500).json({message: error.message})
     }
 }
-module.exports = {getProducts, getSingleProduct, postProduct, updateProduct, deleteProduct}
+
+const postImageRequest = async (req, res) => {
+    try {
+      const response = await fetch('https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0', {
+        headers: {
+          Authorization: 'Bearer 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',
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify(req.body)
+      });
+      const result = await response.json();
+      res.json(result);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({ message: 'Error processing request' });
+    }
+  }
+
+module.exports = {getProducts, getSingleProduct, postProduct, updateProduct, deleteProduct, postImageRequest}

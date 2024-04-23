@@ -1,18 +1,27 @@
 const mongoose =  require('mongoose')
 
 const ProductSchema =  new mongoose.Schema({
-    name: {
+     petId:{
+      type: Number,
+      default: 0,
+     },
+     name: {
       type: String,
     },
-    quantity:{
+    gender:{
+      type: String,
+    },
+    age:{
       type: Number,
       default: 0,
     },
-    price:{
-      type: Number,
-      default: 0,
+    breed:{
+      type: String,
     },
-    image:{
+    location:{
+      type: String,
+    },
+    desc:{
       type: String,
     }
 },{
